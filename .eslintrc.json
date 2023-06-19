@@ -9,24 +9,22 @@
         "plugin:react/recommended",
         "airbnb",
         "airbnb-typescript",
-        "plugin:unicorn/recommended",
-        "prettier"
+        "plugin:unicorn/recommended"
     ],
 
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "react",
-        "unicorn",
-        "prettier"
-    ],
-    "rules": {
-        "quotes": ["error", "single"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "unicorn"
+  ],
+  "rules": {
+    "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "@typescript-eslint/comma-dangle": ["error", "never"],
     "react/function-component-definition": [
@@ -57,10 +55,5 @@
     "linebreak-style": "off",
     "no-confusing-arrow": "off",
     "react/jsx-curly-newline": "off"
-    },
-    "import/resolver": {
-        "node": {
-          "extensions": [".js", ".jsx", ".ts", ".tsx"]
-        }
-      }
+  }
 }
