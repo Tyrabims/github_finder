@@ -1,12 +1,23 @@
 import React from 'react';
-import './App.css';
+import './index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import { Home } from './components/Home';
+import { About } from './components/About';
 
-const App = () => (
+function App() {
+  return (
   <div className="App">
-    <h1>Vite + React</h1>
-    <div className="card">Welcome to react</div>
-    <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+    
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
+      </Routes>
+    </Router>
   </div>
-);
-
+  )
+}
 export default App;
