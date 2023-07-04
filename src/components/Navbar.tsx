@@ -8,10 +8,7 @@ const Navbar = () => {
         <li><h1>Github Finder App</h1></li>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/">About</Link></li>
-      </ul>
-      
-      
-        
+      </ul>  
     </div>
   )
 }
