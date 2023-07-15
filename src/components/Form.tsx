@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import apiClient from '../services/api-client';
- 
+import styles from "../Forms.module.css"; 
 
 interface FetchUserProps {
   "login": string,
@@ -25,12 +25,11 @@ interface FetchUserProps {
   "score": number
 }
 
-
 const Form = () => {
   const [userdetails, setUserdetails] = useState('');
   const [users, setUsers] = useState <FetchUserProps[]>([])
 
- 
+
 
   //fetch data
   const searchUsername = async () => {
@@ -54,7 +53,9 @@ const Form = () => {
   const clearBtn = () => {
     
   }
-      
+  const moreBtn = <div>
+    
+  </div>
   return (
     
     <div className="search">
@@ -78,15 +79,15 @@ const Form = () => {
             {users.map((item) => (
               <>
                  <div className="d-grid gap-2">
-        <button className="btn btn-light" type="button">Clear</button>
+                    <button className="btn btn-light" type="button">Clear</button>
       </div>
-      <div className='container'>
-              <p>{item.login}</p>
+      <div className={styles.container}>
               <img src={item.avatar_url} />
+              <p><b>{item.login}</b></p>
               <div>
               <a className="btn btn-primary" href="#" role="button">More</a>
               </div>
-              </div>
+        </div>
               </>
             ))}
           
