@@ -1,3 +1,6 @@
+body:hover{
+  background-color: aliceblue;
+}
 
 /* nav-bar */
 .nav-item{
@@ -22,12 +25,6 @@ li h3{
   padding: 40px 300px;
 }
 
-/* container */
-/* .container{
-  padding: 20px;
-  width: 20px;
-  margin: 25px;
-} */
 p {
   font-size: 1.5rem;
 }
@@ -37,7 +34,10 @@ img{
   padding: 20px;
   border-radius: 50%;
 }
-
-/* @media (max-width: 500px) */
-
  
+@media screen and (min-width: 700px) {
+   .search{
+    padding:20px 150px;
+   }
+   
+}
