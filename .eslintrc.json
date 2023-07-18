@@ -24,7 +24,6 @@
     "unicorn"
   ],
   "rules": {
-    "quotes": ["error", "single", "double"],
     "no-duplicate-imports": "error",
     "@typescript-eslint/comma-dangle": ["error", "never"],
     "react/function-component-definition": [

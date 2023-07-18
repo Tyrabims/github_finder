@@ -1,9 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import apiClient from '../services/api-client';
 import styles from '../Forms.module.css';
 
-interface FetchUserProps {
+export interface FetchUserProps {
   login: string;
   id: number;
   node_id: string;
@@ -28,27 +30,26 @@ interface FetchUserProps {
 const Form = () => {
   const [userdetails, setUserdetails] = useState('');
   const [users, setUsers] = useState<FetchUserProps[]>([]);
+  const navigate = useNavigate();
 
-  //fetch data
   const searchUsername = async () => {
     try {
-      const { data } = await apiClient.get('/search/users?q=' + userdetails);
+      const { data } = await apiClient.get(`/search/users?q=${userdetails}`);
       setUsers(data.items);
       return data?.item;
-    } catch (error) {
-      return null;
+    } catch {
+      throw new Error('Error fetching data');
     }
   };
 
-  //submit
+  // submit
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (userdetails) {
       await searchUsername();
     }
   };
-  const clearBtn = () => {};
-  const moreBtn = <div></div>;
+
   return (
     <div className="search">
       <form className="input-group mb-3">
@@ -73,15 +74,15 @@ const Form = () => {
               </button>
             </div>
             <div className={styles.container}>
-              <img src={item.avatar_url} />
-              <p>
-                <b>{item.login}</b>
-              </p>
-              <div>
-                <a className="btn btn-primary" href="#" role="button">
-                  More
-                </a>
-              </div>
+              <img src={item.avatar_url} alt="user" />
+              <div>{item.login}</div>
+              <Button
+                className="btn btn-primary"
+                role="button"
+                onClick={() => navigate(`/details/${item.login}`)}
+              >
+                More
+              </Button>
             </div>
           </>
         ))}
