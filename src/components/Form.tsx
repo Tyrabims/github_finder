@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import apiClient from '../services/api-client';
 import styles from '../Forms.module.css';
 
@@ -51,20 +51,17 @@ const Form = () => {
   };
 
   return (
-    <div className="search">
-      <form className="input-group mb-3">
+    <div className="d-grid gap-2 col-6 mx-auto">
         <input
-          onChange={(event) => setUserdetails(event.target.value)}
+          onChange={(e) => setUserdetails(e.target.value)}
           value={userdetails}
           type="text"
-          className="form-control"
-          placeholder="Search Users"
+          className="search" 
+          placeholder="Search Users..."
         />
         <button className="btn btn-dark" type="submit" onClick={handleSubmit}>
           Search
         </button>
-      </form>
-
       <div>
         {users.map((item) => (
           <>
@@ -73,7 +70,25 @@ const Form = () => {
                 Clear
               </button>
             </div>
-            <div className={styles.container}>
+            
+            <Card className={styles.container}>
+              <Card.Body>
+                <Card.Img className='square rounded-circle' src={item.avatar_url} />
+                <Card.Text>
+                {item.login}
+                </Card.Text>
+                <Button variant='primary'
+                onClick={() => navigate(`/details/${item.login}`)}
+                >
+                More
+              </Button>
+              </Card.Body>
+              
+            </Card>
+  
+            
+            
+            {/* <div className={styles.container}>
               <img src={item.avatar_url} alt="user" />
               <div>{item.login}</div>
               <Button
@@ -83,7 +98,7 @@ const Form = () => {
               >
                 More
               </Button>
-            </div>
+            </div> */}
           </>
         ))}
       </div>

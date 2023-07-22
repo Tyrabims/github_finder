@@ -5,5 +5,5 @@ export const Home = () => {
     <div>
       <Form />
     </div>
-  );
+  )
 };
