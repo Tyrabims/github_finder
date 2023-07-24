@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button, Card, Col, Image, Row } from 'react-bootstrap';
+import { Button, Card, Col, Image, Row, ListGroup } from 'react-bootstrap';
 import apiClient from '../services/api-client';
 import { FetchUserProps } from './Form';
+import '../index.css';
+
+
 
 interface UserDetailsData extends FetchUserProps {
   name: string;
@@ -37,20 +40,63 @@ const UserDetails = () => {
     fetchData();
   }, []);
 
+  
   return (
-    <Card className="w-75 mt-4">
-      <Card.Body>
-        <Card.Text>
-          <Row>
-            <Col>
-              <Image src={userDetails?.avatar_url} />
-            </Col>
-            <Col>{userDetails?.bio}</Col>
-          </Row>
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <>
+      <Card className="w-85 mt-4">
+        <Card.Body>
+          <Card.Text>
+            <Row>
+              <Col>
+                <Image
+                  className=" rounded-circle"
+                  style={{ width: 150 }}
+                  src={userDetails?.avatar_url}
+                />
+                <Col>{userDetails?.name}</Col>
+                <Col>{userDetails?.location}</Col>
+              </Col>
+              <Col>
+                {userDetails?.bio}
+                <br />
+                Username: {userDetails?.login}
+              </Col>
+            </Row>
+          </Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
+      <br />
+      <Card className="w-85">
+        <Card.Body>
+          <Button variant="danger" style={{paddingRight: '20'}}>Followers: {userDetails?.followers}</Button>
+          <Button variant="success">Following: {userDetails?.following}</Button>
+          <Button variant="secondary">Public Repos: {userDetails?.public_repos}</Button>
+          <Button variant="dark">Public Gists: {userDetails?.public_gists}</Button>
+        </Card.Body>
+      </Card>
+      <br />
+      <Card className="w-85 px-50">
+        <Card.Header>{userDetails?.repos_url}</Card.Header>
+      </Card>
+      <br />
+      <Card className="w-85">
+        <Card.Header>Featured</Card.Header>
+      </Card>
+      <br />
+      <Card className="w-85">
+        <Card.Header>Featured</Card.Header> 
+      </Card>
+      <br />
+      <Card className="w-85">
+        <Card.Header>Featured</Card.Header>    
+      </Card>
+
+      <br />
+      <Card className="w-85">
+        <Card.Header>Featured</Card.Header>
+      </Card>
+    </>
   );
 };
 

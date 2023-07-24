@@ -8,8 +8,8 @@ const Navbar = () => {
   return (
     <NavbarBs sticky="top" className="bg-danger shadow-sm mb-3">
       <Container>
-          <h1>Github Finder</h1>
-          <Nav className="justify-content-end">
+          <h4 className="git">Github Finder</h4>
+          <Nav className="justify-content-space-between">
           <Nav.Link to="/" as={NavLink}>
             Home
           </Nav.Link>

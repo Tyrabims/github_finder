@@ -73,7 +73,7 @@ const Form = () => {
             
             <Card className={styles.container}>
               <Card.Body>
-                <Card.Img className='square rounded-circle' src={item.avatar_url} />
+                <Card.Img className=' sqaure-rounded-circle' src={item.avatar_url} />
                 <Card.Text>
                 {item.login}
                 </Card.Text>
