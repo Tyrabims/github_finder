@@ -50,13 +50,18 @@ const Form = () => {
     }
   };
 
+  //clear
+  const clearBtn = () => {
+    setUserdetails("")
+  }
+  
+
   return (
-    <div className="d-grid gap-2 col-6 mx-auto">
-        <input
+    <div className="d-grid gap-3 pcol-6 mx-auto">
+        <input className='w-85 mt-4 pt-2'
           onChange={(e) => setUserdetails(e.target.value)}
           value={userdetails}
           type="text"
-          className="search" 
           placeholder="Search Users..."
         />
         <button className="btn btn-dark" type="submit" onClick={handleSubmit}>
@@ -66,14 +71,14 @@ const Form = () => {
         {users.map((item) => (
           <>
             <div className="d-grid gap-2">
-              <button className="btn btn-light" type="button">
+              <button className="btn btn-light" type="button" onClick={clearBtn}>
                 Clear
               </button>
             </div>
-            
+ 
             <Card className={styles.container}>
               <Card.Body>
-                <Card.Img className=' sqaure-rounded-circle' src={item.avatar_url} />
+                <Card.Img className='rounded-circle' src={item.avatar_url} />
                 <Card.Text>
                 {item.login}
                 </Card.Text>
@@ -82,23 +87,8 @@ const Form = () => {
                 >
                 More
               </Button>
-              </Card.Body>
-              
+              </Card.Body>   
             </Card>
-  
-            
-            
-            {/* <div className={styles.container}>
-              <img src={item.avatar_url} alt="user" />
-              <div>{item.login}</div>
-              <Button
-                className="btn btn-primary"
-                role="button"
-                onClick={() => navigate(`/details/${item.login}`)}
-              >
-                More
-              </Button>
-            </div> */}
           </>
         ))}
       </div>

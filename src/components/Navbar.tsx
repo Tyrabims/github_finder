@@ -6,14 +6,14 @@ import styles from './Forms.module.css'
 
 const Navbar = () => {
   return (
-    <NavbarBs sticky="top" className="bg-danger shadow-sm mb-3">
+    <NavbarBs sticky="top" className="bg-danger mb-3">
       <Container>
-          <h4 className="git">Github Finder</h4>
-          <Nav className="justify-content-space-between">
-          <Nav.Link to="/" as={NavLink}>
+          <h4 className="text-white me-6">Github Finder</h4>
+          <Nav>
+          <Nav.Link className="text-white" to="/" as={NavLink}>
             Home
           </Nav.Link>
-          <Nav.Link to="/About" as={NavLink}>
+          <Nav.Link className="text-white me-10 " to="/About" as={NavLink}>
             About
           </Nav.Link>
           </Nav>
