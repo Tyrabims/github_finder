@@ -23,13 +23,14 @@ interface UserDetailsData extends FetchUserProps {
   following: number;
   created_at: number;
   updated_at: number;
+  repos: string[];
 }
 
 const UserDetails = () => {
   const { username } = useParams();
   const [userDetails, setUserDetails] = useState<UserDetailsData>();
-  const [userRepos, setUserRepos] = useState([])
-  
+  const [userRepos, setUserRepos] = useState<UserDetailsData[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,18 +42,16 @@ const UserDetails = () => {
     };
     const fetchUserRepos = async () => {
       try {
-        const { data } = await apiClient.get(`/users/${username}/repos`);
+        const { data } = await apiClient.get(`/users/${username}/repos?per_page=5`);
         setUserRepos(data);
       } catch {
         throw new Error('Error fetching data');
       }
     };
     fetchData();
-    fetchUserRepos()
+    fetchUserRepos();
   }, []);
-console.log(userRepos)
-
-  
+  console.log(userRepos);
 
   return (
     <>
@@ -104,10 +103,14 @@ console.log(userRepos)
           </Button>
         </Card.Body>
       </Card>
-      <Card className="w-85 mt-3">
-        <Card.Header>
-        </Card.Header>
-      </Card>
+      <ListGroup className="w-85 mt-3 text-danger">
+          {userRepos.map((userRepo) => ( 
+                  <ListGroup.Item className='mb-3' >
+                    {userRepo?.name}
+                  </ListGroup.Item>
+          ))}
+        
+      </ListGroup>
     </>
   );
 };

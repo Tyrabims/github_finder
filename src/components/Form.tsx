@@ -52,21 +52,22 @@ const Form = () => {
 
   //clear
   const clearBtn = () => {
-    setUserdetails("")
-  }
-  
+    setUserdetails('')
+    setUsers([]);
+  };
 
   return (
     <div className="d-grid gap-3 pcol-6 mx-auto">
-        <input className='w-85 mt-4 pt-2'
-          onChange={(e) => setUserdetails(e.target.value)}
-          value={userdetails}
-          type="text"
-          placeholder="Search Users..."
-        />
-        <button className="btn btn-dark" type="submit" onClick={handleSubmit}>
-          Search
-        </button>
+      <input
+        className="w-85 mt-4 pt-2"
+        onChange={(e) => setUserdetails(e.target.value)}
+        value={userdetails}
+        type="text"
+        placeholder="Search Users..."
+      />
+      <button className="btn btn-dark" type="submit" onClick={handleSubmit}>
+        Search
+      </button>
       <div>
         {users.map((item) => (
           <>
@@ -75,19 +76,15 @@ const Form = () => {
                 Clear
               </button>
             </div>
- 
+
             <Card className={styles.container}>
               <Card.Body>
-                <Card.Img className='rounded-circle' src={item.avatar_url} />
-                <Card.Text>
-                {item.login}
-                </Card.Text>
-                <Button variant='primary'
-                onClick={() => navigate(`/details/${item.login}`)}
-                >
-                More
-              </Button>
-              </Card.Body>   
+                <Card.Img className="rounded-circle" src={item.avatar_url} />
+                <Card.Text>{item.login}</Card.Text>
+                <Button variant="primary" onClick={() => navigate(`/details/${item.login}`)}>
+                  More
+                </Button>
+              </Card.Body>
             </Card>
           </>
         ))}

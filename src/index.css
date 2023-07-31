@@ -4,33 +4,6 @@ body:hover{
   background-color: aliceblue;
 }
 
-/* body{
-  font-size: 50px;
-} */
-
-/* nav-bar */
-
-/* .nav-item{
-  background-color: rgba(234, 55, 24, 0.805);
-  padding: 12px 0px 2px 0px;
-}
-
-li{
-  list-style-type: none;
-  display: inline-block;
-  padding-right: 100px;
-  text-decoration: none;
-} */
-
-/* li h3{
-  padding-right: 900px;
-} */
-
-
-
-.git{
-  color: #ffff;
-}
 /* form */
 .search{
   background-color: none;
