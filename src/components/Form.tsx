@@ -52,7 +52,7 @@ const Form = () => {
 
   //clear
   const clearBtn = () => {
-    setUserdetails('')
+    setUserdetails('');
     setUsers([]);
   };
 

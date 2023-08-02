@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Button, Card, Col, Image, Row, ListGroup } from 'react-bootstrap';
 import apiClient from '../services/api-client';
 import { FetchUserProps } from './Form';
@@ -7,6 +7,7 @@ import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaCheck } from 'react-icons/fa';
 import { BsFillXCircleFill } from 'react-icons/bs';
+
 
 interface UserDetailsData extends FetchUserProps {
   name: string;
@@ -30,6 +31,7 @@ const UserDetails = () => {
   const { username } = useParams();
   const [userDetails, setUserDetails] = useState<UserDetailsData>();
   const [userRepos, setUserRepos] = useState<UserDetailsData[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +57,7 @@ const UserDetails = () => {
 
   return (
     <>
-      <Button variant="white" className="border border-1 me-4">
+      <Button variant="white" className="border border-1 me-4" onClick={() => navigate('/')}>
         Back To Search
       </Button>
       Hireable: {userDetails?.hireable ? <FaCheck /> : <BsFillXCircleFill />}
@@ -76,9 +78,9 @@ const UserDetails = () => {
                 <span className="fw-bold">Bio</span>
                 <br />
                 {userDetails?.bio}
-                <Button variant="dark" className="mt-3 mb-3">
-                  Visit github profile
-                </Button>
+                <Link className="mt-3 mb-3" to={userDetails?.html_url || ''} target="_blank">
+                  <Button variant="dark">Visit github profile</Button>
+                </Link>
                 <br />
                 Username: {userDetails?.login}
               </Col>
@@ -104,12 +106,9 @@ const UserDetails = () => {
         </Card.Body>
       </Card>
       <ListGroup className="w-85 mt-3 text-danger">
-          {userRepos.map((userRepo) => ( 
-                  <ListGroup.Item className='mb-3' >
-                    {userRepo?.name}
-                  </ListGroup.Item>
-          ))}
-        
+        {userRepos.map((userRepo) => (
+          <ListGroup.Item className="mb-3">{userRepo?.name}</ListGroup.Item>
+        ))}
       </ListGroup>
     </>
   );
