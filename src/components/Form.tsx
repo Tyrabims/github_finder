@@ -50,7 +50,7 @@ const Form = () => {
     }
   };
 
-  //clear
+  // clear
   const clearBtn = () => {
     setUserdetails('');
     setUsers([]);

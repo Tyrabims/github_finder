@@ -1,7 +1,9 @@
+import React from 'react';
+
 import './index.css';
 import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import { Container } from 'react-bootstrap';
+import Navbar from './components/Navbar';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import UserDetails from './components/UserDetailsProps';

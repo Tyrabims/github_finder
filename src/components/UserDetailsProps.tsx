@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Button, Card, Col, Image, Row, ListGroup } from 'react-bootstrap';
@@ -7,7 +8,6 @@ import '../index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaCheck } from 'react-icons/fa';
 import { BsFillXCircleFill } from 'react-icons/bs';
-
 
 interface UserDetailsData extends FetchUserProps {
   name: string;
@@ -53,7 +53,6 @@ const UserDetails = () => {
     fetchData();
     fetchUserRepos();
   }, []);
-  console.log(userRepos);
 
   return (
     <>
@@ -67,8 +66,7 @@ const UserDetails = () => {
             <Row>
               <Col className="text-center">
                 <Image
-                  className=" rounded-circle mb-3"
-                  style={{ width: 150 }}
+                  className=" rounded-circle mb-3 w-50"
                   src={userDetails?.avatar_url}
                 />
                 <Col className="fw-bolder">{userDetails?.name}</Col>
