@@ -38,20 +38,13 @@ const UserDetails = () => {
       try {
         const { data } = await apiClient.get(`/users/${username}`);
         setUserDetails(data);
-      } catch {
-        throw new Error('Error fetching data');
-      }
-    };
-    const fetchUserRepos = async () => {
-      try {
-        const { data } = await apiClient.get(`/users/${username}/repos?per_page=5`);
-        setUserRepos(data);
+        const { data: userRepoData } = await apiClient.get(`/users/${username}/repos?per_page=5`);
+        setUserRepos(userRepoData);
       } catch {
         throw new Error('Error fetching data');
       }
     };
     fetchData();
-    fetchUserRepos();
   }, []);
 
   return (
@@ -104,8 +97,8 @@ const UserDetails = () => {
         </Card.Body>
       </Card>
       <ListGroup className="w-85 mt-3 text-danger">
-        {userRepos.map((userRepo) => (
-          <ListGroup.Item className="mb-3">{userRepo?.name}</ListGroup.Item>
+        {userRepos.map((userRepo, index) => (
+          <ListGroup.Item key={index} className="mb-3">{userRepo?.name}</ListGroup.Item>
         ))}
       </ListGroup>
     </>

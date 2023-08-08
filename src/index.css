@@ -1,18 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-body:hover{
+body:hover {
   background-color: aliceblue;
 }
 
 /* form */
-.search{
+.search {
   padding: 10px 10px;
   margin-top: 30px;
 }
 
 @media screen and (max-width: 700px) {
-   .search{
-    padding:20px 150px;
-   }
-   
+  .search {
+    padding: 20px 150px;
+  }
 }
